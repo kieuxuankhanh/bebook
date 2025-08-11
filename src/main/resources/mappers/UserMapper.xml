@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+        <result column="roles" property="roles"/>
+        <result column="avatar_url" property="avatarUrl"/>
+        <result column="birthdate" property="birthdate"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,username,email,password,roles,avatar_url,birthdate
+    </sql>
+
+    <sql id="Base_List">
+        id,username,email,roles,avatar_url,birthdate
+    </sql>
+
+    <select id="findAll" resultMap="UserResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM users
+        ORDER BY create_at DESC
+    </select>
+
+    <!-- Select User by ID -->
+    <select id="findById" resultMap="UserResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM users
+        WHERE id = #{id}
+    </select>
+
+    <!-- Select User by Email -->
+    <select id="findByEmail" resultMap="UserResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM users
+        WHERE email = #{email}
+    </select>
+
+    <!-- Insert User -->
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (username, email, password, roles, avatar_url, birthdate)
+        VALUES (#{username}, #{email}, #{password}, #{roles}, #{avatarUrl}, #{birthdate})
+    </insert>
+
+    <!-- Update User -->
+    <update id="update" parameterType="User">
+        UPDATE users
+        SET username = #{username},
+            email = #{email},
+            password = #{password},
+            roles = #{roles},
+            avatar_url = #{avatarUrl},
+            birthdate = #{birthdate}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Delete User -->
+    <delete id="deleteById">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <!-- Find User by Name (exact match) -->
+    <select id="findByName" resultMap="UserResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM users
+        WHERE username = #{username}
+    </select>
+
+    <!-- Find User by Username (exact match) -->
+    <select id="findByUsernameExact" resultMap="UserResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM users
+        WHERE username = #{username}
+    </select>
+
+</mapper>

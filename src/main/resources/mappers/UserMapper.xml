@@ -18,10 +18,6 @@
         id,username,email,password,roles,avatar_url,birthdate
     </sql>
 
-    <sql id="Base_List">
-        id,username,email,roles,avatar_url,birthdate
-    </sql>
-
     <select id="findAll" resultMap="UserResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM users

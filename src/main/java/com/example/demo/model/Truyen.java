@@ -6,21 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "chapters")
-public class Chapter {
+@Document(collection = "truyen")
+public class Truyen {
     @Id
     private String id;
-    @Field("story_id")
-    private String storyId;
-    @Field("chapter_title")
-    private String chapterTitle;
-    private String chapter_url;
-    private String chapter_id;
-    private String content;
+    private String truyen_name;
+    private String volume_name;
+    private String title;
+    private String author;
+    private List<String> genres;
+    private String status;
+    private String base_url;
+    private String description;
 }

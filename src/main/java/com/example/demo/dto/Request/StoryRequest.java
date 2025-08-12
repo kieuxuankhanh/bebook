@@ -16,4 +16,6 @@ public class StoryRequest {
     private String author;
     private List<String> genres;
     private String description;
+    private String img;
+    private String source;
 }

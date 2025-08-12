@@ -1,4 +1,4 @@
-package com.example.demo.dto.Response;
+package com.example.demo.dto.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,18 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StoryResponse {
+public class TruyenRequest {
     private String id;
     private String title;
     private String author;
-    private String description;
     private List<String> genres;
-    private String img;
-    private String source;
+    private String description;
 }

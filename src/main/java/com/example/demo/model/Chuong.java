@@ -9,18 +9,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Document(collection = "chapters")
-public class Chapter {
+@Document(collection = "chuong")
+public class Chuong {
     @Id
     private String id;
     @Field("story_id")
     private String storyId;
-    @Field("chapter_title")
-    private String chapterTitle;
-    private String chapter_url;
-    private String chapter_id;
+    @Field("chapter_id")
+    private String chapterId;
+    private String chapterUrl;
+    private int chapter_number;
     private String content;
 }
